@@ -50,15 +50,15 @@ importers:
       '@t3-oss/env-core':
         specifier: 'catalog:'
         version: 0.13.8(typescript@5.8.3)(zod@4.0.14)
-      '@vercel/postgres':
-        specifier: ^0.10.0
-        version: 0.10.0
       drizzle-orm:
         specifier: ^0.44.1
-        version: 0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0)
+        version: 0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(postgres@3.4.7)
       drizzle-zod:
         specifier: ^0.8.2
-        version: 0.8.2(drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0))(zod@4.0.14)
+        version: 0.8.2(drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(postgres@3.4.7))(zod@4.0.14)
+      postgres:
+        specifier: 3.4.7
+        version: 3.4.7
       zod:
         specifier: 'catalog:'
         version: 4.0.14
@@ -2455,6 +2455,10 @@ packages:
   postgres-range@1.1.4:
     resolution: {integrity: sha512-i/hbxIE9803Alj/6ytL7UHQxRvZkI9O4Sy+J3HGc4F4oo/2eQAjTSNJ0bfxyse3bH0nuVesCk+3IRLaMtG3H6w==}
 
+  postgres@3.4.7:
+    resolution: {integrity: sha512-Jtc2612XINuBjIl/QTWsV5UvE8UHuNblcO3vVADSrKsrc6RqGX6lOW1cEo3CM2v0XG4Nat8nI+YM7/f26VxXLw==}
+    engines: {node: '>=12'}
+
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -3527,6 +3531,7 @@ snapshots:
   '@neondatabase/serverless@0.9.5':
     dependencies:
       '@types/pg': 8.11.6
+    optional: true
 
   '@next/eslint-plugin-next@15.3.3':
     dependencies:
@@ -3625,6 +3630,7 @@ snapshots:
       '@types/node': 22.15.29
       pg-protocol: 1.10.3
       pg-types: 4.1.0
+    optional: true
 
   '@types/through@0.0.33':
     dependencies:
@@ -3731,6 +3737,7 @@ snapshots:
       ws: 8.18.3(bufferutil@4.0.9)
     transitivePeerDependencies:
       - utf-8-validate
+    optional: true
 
   '@vue/compiler-core@3.5.16':
     dependencies:
@@ -3952,6 +3959,7 @@ snapshots:
   bufferutil@4.0.9:
     dependencies:
       node-gyp-build: 4.8.4
+    optional: true
 
   call-bind-apply-helpers@1.0.1:
     dependencies:
@@ -4202,14 +4210,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0):
+  drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(postgres@3.4.7):
     optionalDependencies:
       '@types/pg': 8.11.6
       '@vercel/postgres': 0.10.0
+      postgres: 3.4.7
 
-  drizzle-zod@0.8.2(drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0))(zod@4.0.14):
+  drizzle-zod@0.8.2(drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(postgres@3.4.7))(zod@4.0.14):
     dependencies:
-      drizzle-orm: 0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0)
+      drizzle-orm: 0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(postgres@3.4.7)
       zod: 4.0.14
 
   dunder-proto@1.0.1:
@@ -5230,7 +5239,8 @@ snapshots:
     dependencies:
       lower-case: 1.1.4
 
-  node-gyp-build@4.8.4: {}
+  node-gyp-build@4.8.4:
+    optional: true
 
   node-plop@0.26.3:
     dependencies:
@@ -5298,7 +5308,8 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.1.1
 
-  obuf@1.1.2: {}
+  obuf@1.1.2:
+    optional: true
 
   once@1.4.0:
     dependencies:
@@ -5412,11 +5423,14 @@ snapshots:
 
   path-type@4.0.0: {}
 
-  pg-int8@1.0.1: {}
+  pg-int8@1.0.1:
+    optional: true
 
-  pg-numeric@1.0.2: {}
+  pg-numeric@1.0.2:
+    optional: true
 
-  pg-protocol@1.10.3: {}
+  pg-protocol@1.10.3:
+    optional: true
 
   pg-types@4.1.0:
     dependencies:
@@ -5427,6 +5441,7 @@ snapshots:
       postgres-date: 2.1.0
       postgres-interval: 3.0.0
       postgres-range: 1.1.4
+    optional: true
 
   picocolors@1.0.1: {}
 
@@ -5478,17 +5493,24 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  postgres-array@3.0.4: {}
+  postgres-array@3.0.4:
+    optional: true
 
   postgres-bytea@3.0.0:
     dependencies:
       obuf: 1.1.2
+    optional: true
 
-  postgres-date@2.1.0: {}
+  postgres-date@2.1.0:
+    optional: true
 
-  postgres-interval@3.0.0: {}
+  postgres-interval@3.0.0:
+    optional: true
 
-  postgres-range@1.1.4: {}
+  postgres-range@1.1.4:
+    optional: true
+
+  postgres@3.4.7: {}
 
   prelude-ls@1.2.1: {}
 
@@ -6141,6 +6163,7 @@ snapshots:
   ws@8.18.3(bufferutil@4.0.9):
     optionalDependencies:
       bufferutil: 4.0.9
+    optional: true
 
   yallist@3.1.1: {}
 

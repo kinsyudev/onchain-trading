@@ -4,6 +4,8 @@ import baseConfig from "@kinsyu/eslint-config/base";
 export default [
   {
     ignores: ["dist/**"],
+    files: ["src", "env.ts"],
   },
+  ,
   ...baseConfig,
 ];
