@@ -1,0 +1,33 @@
+{
+  "name": "uniswap-v2",
+  "module": "src/index.ts",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "pnpm with-env tsx --watch src/index.ts",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "start": "pnpm with-env tsx src/index.ts",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "devDependencies": {
+    "@kinsyu/eslint-config": "workspace:*",
+    "@kinsyu/prettier-config": "workspace:*",
+    "@kinsyu/tsconfig": "workspace:*",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@t3-oss/env-core": "catalog:",
+    "dotenv-cli": "catalog:",
+    "hono": "^4.5.0",
+    "ponder": "^0.11.38",
+    "viem": "^2.21.3"
+  },
+  "prettier": "@kinsyu/prettier-config"
+}
