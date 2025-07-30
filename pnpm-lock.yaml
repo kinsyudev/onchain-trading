@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@t3-oss/env-core':
+      specifier: 0.13.8
+      version: 0.13.8
     eslint:
       specifier: ^9.28.0
       version: 9.28.0
@@ -19,8 +22,8 @@ catalogs:
       specifier: ^5.8.3
       version: 5.8.3
     zod:
-      specifier: ^3.25.49
-      version: 3.25.49
+      specifier: 4.0.14
+      version: 4.0.14
 
 importers:
 
@@ -44,6 +47,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@t3-oss/env-core':
+        specifier: 'catalog:'
+        version: 0.13.8(typescript@5.8.3)(zod@4.0.14)
       '@vercel/postgres':
         specifier: ^0.10.0
         version: 0.10.0
@@ -52,10 +58,10 @@ importers:
         version: 0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0)
       drizzle-zod:
         specifier: ^0.8.2
-        version: 0.8.2(drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0))(zod@3.25.49)
+        version: 0.8.2(drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0))(zod@4.0.14)
       zod:
         specifier: 'catalog:'
-        version: 3.25.49
+        version: 4.0.14
     devDependencies:
       '@kinsyu/eslint-config':
         specifier: workspace:*
@@ -67,8 +73,8 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript
       dotenv-cli:
-        specifier: ^8.0.0
-        version: 8.0.0
+        specifier: 10.0.0
+        version: 10.0.0
       drizzle-kit:
         specifier: ^0.31.1
         version: 0.31.4
@@ -86,7 +92,7 @@ importers:
     dependencies:
       zod:
         specifier: 'catalog:'
-        version: 3.25.49
+        version: 4.0.14
     devDependencies:
       '@kinsyu/eslint-config':
         specifier: workspace:*
@@ -777,6 +783,23 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
+  '@t3-oss/env-core@0.13.8':
+    resolution: {integrity: sha512-L1inmpzLQyYu4+Q1DyrXsGJYCXbtXjC4cICw1uAKv0ppYPQv656lhZPU91Qd1VS6SO/bou1/q5ufVzBGbNsUpw==}
+    peerDependencies:
+      arktype: ^2.1.0
+      typescript: '>=5.0.0'
+      valibot: ^1.0.0-beta.7 || ^1.0.0
+      zod: ^3.24.0 || ^4.0.0-beta.0
+    peerDependenciesMeta:
+      arktype:
+        optional: true
+      typescript:
+        optional: true
+      valibot:
+        optional: true
+      zod:
+        optional: true
+
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
 
@@ -1282,12 +1305,12 @@ packages:
   dot-case@2.1.1:
     resolution: {integrity: sha512-HnM6ZlFqcajLsyudHq7LeeLDr2rFAVYtDv/hV5qchQEidSck8j9OPUsXY9KwJv/lHMtYlX4DjRQqwFYa+0r8Ug==}
 
-  dotenv-cli@8.0.0:
-    resolution: {integrity: sha512-aLqYbK7xKOiTMIRf1lDPbI+Y+Ip/wo5k3eyp6ePysVaSqbyxjyK3dK35BTxG+rmd7djf5q2UPs4noPNH+cj0Qw==}
+  dotenv-cli@10.0.0:
+    resolution: {integrity: sha512-lnOnttzfrzkRx2echxJHQRB6vOAMSCzzZg79IxpC00tU42wZPuZkQxNNrrwVAxaQZIIh001l4PxVlCrBxngBzA==}
     hasBin: true
 
-  dotenv-expand@10.0.0:
-    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+  dotenv-expand@11.0.7:
+    resolution: {integrity: sha512-zIHwmZPRshsCdpMDyVsqGmgyP0yT8GAgXUnkdAoJisxvf33k7yO6OuoKmcTGuXPWSsm8Oh88nZicRLA9Y0rUeA==}
     engines: {node: '>=12'}
 
   dotenv@16.0.3:
@@ -1296,6 +1319,10 @@ packages:
 
   dotenv@16.6.1:
     resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+    engines: {node: '>=12'}
+
+  dotenv@17.2.1:
+    resolution: {integrity: sha512-kQhDYKZecqnM0fCnzI5eIv5L4cAe/iRI+HqMbO/hbRdTAeXDG+M9FjipUxNfbARuEg4iHIbhnhs78BCHNbSxEQ==}
     engines: {node: '>=12'}
 
   drizzle-kit@0.31.4:
@@ -3040,6 +3067,9 @@ packages:
   zod@3.25.49:
     resolution: {integrity: sha512-JMMPMy9ZBk3XFEdbM3iL1brx4NUSejd6xr3ELrrGEfGb355gjhiAWtG3K5o+AViV/3ZfkIrCzXsZn6SbLwTR8Q==}
 
+  zod@4.0.14:
+    resolution: {integrity: sha512-nGFJTnJN6cM2v9kXL+SOBq3AtjQby3Mv5ySGFof5UGRHrRioSJ5iG680cYNjE/yWk671nROcpPj4hAS8nyLhSw==}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -3518,6 +3548,11 @@ snapshots:
     optional: true
 
   '@rtsao/scc@1.1.0': {}
+
+  '@t3-oss/env-core@0.13.8(typescript@5.8.3)(zod@4.0.14)':
+    optionalDependencies:
+      typescript: 5.8.3
+      zod: 4.0.14
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
@@ -4141,18 +4176,22 @@ snapshots:
     dependencies:
       no-case: 2.3.2
 
-  dotenv-cli@8.0.0:
+  dotenv-cli@10.0.0:
     dependencies:
       cross-spawn: 7.0.6
-      dotenv: 16.6.1
-      dotenv-expand: 10.0.0
+      dotenv: 17.2.1
+      dotenv-expand: 11.0.7
       minimist: 1.2.8
 
-  dotenv-expand@10.0.0: {}
+  dotenv-expand@11.0.7:
+    dependencies:
+      dotenv: 16.6.1
 
   dotenv@16.0.3: {}
 
   dotenv@16.6.1: {}
+
+  dotenv@17.2.1: {}
 
   drizzle-kit@0.31.4:
     dependencies:
@@ -4168,10 +4207,10 @@ snapshots:
       '@types/pg': 8.11.6
       '@vercel/postgres': 0.10.0
 
-  drizzle-zod@0.8.2(drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0))(zod@3.25.49):
+  drizzle-zod@0.8.2(drizzle-orm@0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0))(zod@4.0.14):
     dependencies:
       drizzle-orm: 0.44.4(@types/pg@8.11.6)(@vercel/postgres@0.10.0)
-      zod: 3.25.49
+      zod: 4.0.14
 
   dunder-proto@1.0.1:
     dependencies:
@@ -6116,3 +6155,5 @@ snapshots:
       zod: 3.25.49
 
   zod@3.25.49: {}
+
+  zod@4.0.14: {}
