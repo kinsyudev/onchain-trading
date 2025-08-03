@@ -11,6 +11,10 @@
     "./messaging": {
       "types": "./dist/messaging.d.ts",
       "default": "./src/messaging.ts"
+    },
+    "./blockchain/events/*": {
+      "types": "./dist/blockchain/events/*.d.ts",
+      "default": "./src/blockchain/events/*.ts"
     }
   },
   "license": "MIT",

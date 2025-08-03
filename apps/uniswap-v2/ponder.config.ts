@@ -1,6 +1,6 @@
 import { createConfig } from "ponder";
 
-import { UniV2PairAbi } from "./abis/UniswapV2PairAbi";
+import { UniV2PairAbi } from "./src/abis/UniswapV2PairAbi";
 
 export const START_BLOCK = 22009797;
 

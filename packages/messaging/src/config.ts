@@ -1,9 +1,5 @@
-import {
-  AnotherQueueSchema,
-  ExampleQueueSchema,
-} from "@kinsyu/validators/messaging";
+import { UniswapV2Swap } from "@kinsyu/validators/blockchain/events/uniswap-v2";
 
 export const queueSchemas = {
-  "example-queue": ExampleQueueSchema,
-  "another-queue": AnotherQueueSchema,
+  "uniswap-v2-swaps": UniswapV2Swap,
 } as const;

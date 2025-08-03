@@ -30,6 +30,9 @@ catalogs:
     typescript:
       specifier: ^5.8.3
       version: 5.8.3
+    viem:
+      specifier: ^2.33.2
+      version: 2.33.2
     zod:
       specifier: 4.0.14
       version: 4.0.14
@@ -56,9 +59,15 @@ importers:
 
   apps/uniswap-v2:
     dependencies:
+      '@kinsyu/messaging':
+        specifier: workspace:*
+        version: link:../../packages/messaging
+      '@kinsyu/validators':
+        specifier: workspace:*
+        version: link:../../packages/validators
       '@t3-oss/env-core':
         specifier: 'catalog:'
-        version: 0.13.8(typescript@5.8.3)(zod@3.25.49)
+        version: 0.13.8(typescript@5.8.3)(zod@4.0.14)
       dotenv-cli:
         specifier: 'catalog:'
         version: 10.0.0
@@ -66,11 +75,14 @@ importers:
         specifier: ^4.5.0
         version: 4.8.10
       ponder:
-        specifier: ^0.11.38
-        version: 0.11.40(@opentelemetry/api@1.9.0)(@types/node@22.15.29)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(hono@4.8.10)(postgres@3.4.7)(typescript@5.8.3)(viem@2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49))(zod@3.25.49)
+        specifier: 0.12.0
+        version: 0.12.0(@opentelemetry/api@1.9.0)(@types/node@22.15.29)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(hono@4.8.10)(postgres@3.4.7)(typescript@5.8.3)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@4.0.14))(zod@4.0.14)
       viem:
-        specifier: ^2.21.3
-        version: 2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49)
+        specifier: 'catalog:'
+        version: 2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@4.0.14)
+      zod:
+        specifier: 'catalog:'
+        version: 4.0.14
     devDependencies:
       '@kinsyu/eslint-config':
         specifier: workspace:*
@@ -1105,8 +1117,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@ponder/utils@0.2.9':
-    resolution: {integrity: sha512-lyvxgHXQbJugLFaNMIHB0oLy6uRfUC0SddxOgx/CSTnv/fT2RXM6/pXz9D9ODfPY7LcAu3fNOZBbCCU0PoVO+g==}
+  '@ponder/utils@0.2.10':
+    resolution: {integrity: sha512-h9y+L+dUEOkLn0oh0GECJ1kWJNzrFtLoMPODR7NsvqGcovq5ZaGFvFxb7+iDOUN6f6xn2M+cUoYjkmMsskw8+A==}
     peerDependencies:
       typescript: '>=5.0.4'
       viem: '>=2'
@@ -3054,8 +3066,8 @@ packages:
     resolution: {integrity: sha512-qFOyK5PjiWZd+QQIh+1jhdb9LpxTF0qs7Pm8o5QHYZ0M3vKqSqzsZaEB6oWlxZ+q2sJBMI/Ktgd2N5ZwQoRHfg==}
     engines: {node: '>= 0.4'}
 
-  ox@0.8.1:
-    resolution: {integrity: sha512-e+z5epnzV+Zuz91YYujecW8cF01mzmrUtWotJ0oEPym/G82uccs7q0WDHTYL3eiONbTUEvcZrptAKLgTBD3u2A==}
+  ox@0.8.6:
+    resolution: {integrity: sha512-eiKcgiVVEGDtEpEdFi1EGoVVI48j6icXHce9nFwCNM7CKG3uoCXKdr4TPhS00Iy1TR2aWSF1ltPD0x/YgqIL9w==}
     peerDependencies:
       typescript: '>=5.4.0'
     peerDependenciesMeta:
@@ -3212,8 +3224,8 @@ packages:
     resolution: {integrity: sha512-TfySrs/5nm8fQJDcBDuUng3VOUKsd7S+zqvbOTiGXHfxX4wK31ard+hoNuvkicM/2YFzlpDgABOevKSsB4G/FA==}
     engines: {node: '>= 6'}
 
-  ponder@0.11.40:
-    resolution: {integrity: sha512-E00KQmcu37UrGleg8CFDDY9/eRkDqt0jH0ZBKesPjxcp5lDAf5PO38G6lMwkbqi7pW4i3KC6qJpMaZVt2daONQ==}
+  ponder@0.12.0:
+    resolution: {integrity: sha512-ouAYqzZrjIgUBb43OiOB1iYoL1KabYDce9u545oPNECaXc9rSZHryymwvn8c26ymWNTMRF1dPsIQvERODDs/nw==}
     engines: {node: '>=18.14'}
     hasBin: true
     peerDependencies:
@@ -3950,8 +3962,8 @@ packages:
     resolution: {integrity: sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  viem@2.33.1:
-    resolution: {integrity: sha512-++Dkj8HvSOLPMKEs+ZBNNcWbBRlUHcXNWktjIU22hgr6YmbUldV1sPTGLZa6BYRm06WViMjXj6HIsHt8rD+ZKQ==}
+  viem@2.33.2:
+    resolution: {integrity: sha512-/720OaM4dHWs8vXwNpyet+PRERhPaW+n/1UVSCzyb9jkmwwVfaiy/R6YfCFb4v+XXbo8s3Fapa3DM5yCRSkulA==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
@@ -4770,9 +4782,9 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@ponder/utils@0.2.9(typescript@5.8.3)(viem@2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49))':
+  '@ponder/utils@0.2.10(typescript@5.8.3)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@4.0.14))':
     dependencies:
-      viem: 2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49)
+      viem: 2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@4.0.14)
     optionalDependencies:
       typescript: 5.8.3
 
@@ -4854,11 +4866,6 @@ snapshots:
       '@scure/base': 1.2.6
 
   '@sinclair/typebox@0.34.38': {}
-
-  '@t3-oss/env-core@0.13.8(typescript@5.8.3)(zod@3.25.49)':
-    optionalDependencies:
-      typescript: 5.8.3
-      zod: 3.25.49
 
   '@t3-oss/env-core@0.13.8(typescript@5.8.3)(zod@4.0.14)':
     optionalDependencies:
@@ -5121,15 +5128,15 @@ snapshots:
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
 
-  abitype@0.10.3(typescript@5.8.3)(zod@3.25.49):
+  abitype@0.10.3(typescript@5.8.3)(zod@4.0.14):
     optionalDependencies:
       typescript: 5.8.3
-      zod: 3.25.49
+      zod: 4.0.14
 
-  abitype@1.0.8(typescript@5.8.3)(zod@3.25.49):
+  abitype@1.0.8(typescript@5.8.3)(zod@4.0.14):
     optionalDependencies:
       typescript: 5.8.3
-      zod: 3.25.49
+      zod: 4.0.14
 
   abort-controller@3.0.0:
     dependencies:
@@ -6897,7 +6904,7 @@ snapshots:
       object-keys: 1.1.1
       safe-push-apply: 1.0.0
 
-  ox@0.8.1(typescript@5.8.3)(zod@3.25.49):
+  ox@0.8.6(typescript@5.8.3)(zod@4.0.14):
     dependencies:
       '@adraffy/ens-normalize': 1.11.0
       '@noble/ciphers': 1.3.0
@@ -6905,7 +6912,7 @@ snapshots:
       '@noble/hashes': 1.8.0
       '@scure/bip32': 1.7.0
       '@scure/bip39': 1.6.0
-      abitype: 1.0.8(typescript@5.8.3)(zod@3.25.49)
+      abitype: 1.0.8(typescript@5.8.3)(zod@4.0.14)
       eventemitter3: 5.0.1
     optionalDependencies:
       typescript: 5.8.3
@@ -7074,7 +7081,7 @@ snapshots:
 
   pirates@4.0.7: {}
 
-  ponder@0.11.40(@opentelemetry/api@1.9.0)(@types/node@22.15.29)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(hono@4.8.10)(postgres@3.4.7)(typescript@5.8.3)(viem@2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49))(zod@3.25.49):
+  ponder@0.12.0(@opentelemetry/api@1.9.0)(@types/node@22.15.29)(@types/pg@8.11.6)(@vercel/postgres@0.10.0)(hono@4.8.10)(postgres@3.4.7)(typescript@5.8.3)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@4.0.14))(zod@4.0.14):
     dependencies:
       '@babel/code-frame': 7.27.1
       '@commander-js/extra-typings': 12.1.0(commander@12.1.0)
@@ -7083,8 +7090,8 @@ snapshots:
       '@escape.tech/graphql-armor-max-depth': 2.4.1
       '@escape.tech/graphql-armor-max-tokens': 2.5.1
       '@hono/node-server': 1.13.3(hono@4.8.10)
-      '@ponder/utils': 0.2.9(typescript@5.8.3)(viem@2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49))
-      abitype: 0.10.3(typescript@5.8.3)(zod@3.25.49)
+      '@ponder/utils': 0.2.10(typescript@5.8.3)(viem@2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@4.0.14))
+      abitype: 0.10.3(typescript@5.8.3)(zod@4.0.14)
       ansi-escapes: 7.0.0
       commander: 12.1.0
       conf: 12.0.0
@@ -7109,7 +7116,7 @@ snapshots:
       stacktrace-parser: 0.1.11
       superjson: 2.2.2
       terminal-size: 4.0.0
-      viem: 2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49)
+      viem: 2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@4.0.14)
       vite: 5.0.7(@types/node@22.15.29)
       vite-node: 1.0.2(@types/node@22.15.29)
       vite-tsconfig-paths: 4.3.1(typescript@5.8.3)(vite@5.0.7(@types/node@22.15.29))
@@ -7912,15 +7919,15 @@ snapshots:
 
   validate-npm-package-name@5.0.1: {}
 
-  viem@2.33.1(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49):
+  viem@2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@4.0.14):
     dependencies:
       '@noble/curves': 1.9.2
       '@noble/hashes': 1.8.0
       '@scure/bip32': 1.7.0
       '@scure/bip39': 1.6.0
-      abitype: 1.0.8(typescript@5.8.3)(zod@3.25.49)
+      abitype: 1.0.8(typescript@5.8.3)(zod@4.0.14)
       isows: 1.0.7(ws@8.18.2(bufferutil@4.0.9))
-      ox: 0.8.1(typescript@5.8.3)(zod@3.25.49)
+      ox: 0.8.6(typescript@5.8.3)(zod@4.0.14)
       ws: 8.18.2(bufferutil@4.0.9)
     optionalDependencies:
       typescript: 5.8.3

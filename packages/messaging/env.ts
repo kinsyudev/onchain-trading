@@ -4,7 +4,6 @@ import { z } from "zod/v4";
 export const env = createEnv({
   server: {
     RABBITMQ_URL: z.string().min(1),
-    NODE_ENV: z.enum(["development", "production", "test"]).optional(),
   },
   runtimeEnv: process.env,
   skipValidation:
