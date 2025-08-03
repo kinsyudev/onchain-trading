@@ -3,13 +3,10 @@ import { z } from "zod/v4";
 
 export const env = createEnv({
   server: {
-    RPC_URL_1: z.string().url().optional(), // Ethereum mainnet
-    RPC_URL_10: z.string().url().optional(), // Optimism
-    RPC_URL_56: z.string().url().optional(), // BSC
-    RPC_URL_137: z.string().url().optional(), // Polygon
-    RPC_URL_8453: z.string().url().optional(), // Base
-    RPC_URL_42161: z.string().url().optional(), // Arbitrum
-    RPC_URL_43114: z.string().url().optional(), // Avalanche
+    RPC_URL_1: z.string(), // Ethereum mainnet
+    RPC_URL_1_WS: z.string(), // Ethereum mainnet
+    RPC_URL_8453: z.string(), // Base
+    RPC_URL_8453_WS: z.string(), // Base
   },
   runtimeEnv: process.env,
   skipValidation:

@@ -23,6 +23,7 @@
     "typescript": "catalog:"
   },
   "dependencies": {
+    "@kinsyu/evm": "workspace:*",
     "@kinsyu/messaging": "workspace:*",
     "@kinsyu/validators": "workspace:*",
     "@t3-oss/env-core": "catalog:",
