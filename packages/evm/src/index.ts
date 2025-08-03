@@ -1,1 +1,1 @@
-export const name = "evm";
+export * from "viem";
