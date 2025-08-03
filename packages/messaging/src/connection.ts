@@ -9,7 +9,9 @@ export interface RabbitMQClient {
   channelModel: ChannelModel;
 }
 
-export async function connectToRabbitMQ(url: string): Promise<RabbitMQClient> {
+export async function connectToRabbitMQ(
+  url = "amqp://admin:admin@localhost:5672",
+): Promise<RabbitMQClient> {
   try {
     const channelModel = await amqp.connect(url);
     const channel = await channelModel.createChannel();
