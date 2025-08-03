@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@sinclair/typebox':
+      specifier: ^0.34
+      version: 0.34.38
     '@t3-oss/env-core':
       specifier: 0.13.8
       version: 0.13.8
@@ -136,15 +139,15 @@ importers:
 
   packages/messaging:
     dependencies:
+      '@kinsyu/validators':
+        specifier: workspace:*
+        version: link:../validators
       '@t3-oss/env-core':
         specifier: 'catalog:'
         version: 0.13.8(typescript@5.8.3)(zod@4.0.14)
       amqplib:
         specifier: 0.10.8
         version: 0.10.8
-      zod:
-        specifier: 'catalog:'
-        version: 4.0.14
     devDependencies:
       '@kinsyu/eslint-config':
         specifier: workspace:*
@@ -155,6 +158,9 @@ importers:
       '@kinsyu/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
+      '@types/amqplib':
+        specifier: 0.10.7
+        version: 0.10.7
       eslint:
         specifier: 'catalog:'
         version: 9.28.0(jiti@2.4.2)
@@ -167,9 +173,9 @@ importers:
 
   packages/validators:
     dependencies:
-      zod:
+      '@sinclair/typebox':
         specifier: 'catalog:'
-        version: 4.0.14
+        version: 0.34.38
     devDependencies:
       '@kinsyu/eslint-config':
         specifier: workspace:*
@@ -1223,6 +1229,9 @@ packages:
   '@scure/bip39@1.6.0':
     resolution: {integrity: sha512-+lF0BbLiJNwVlev4eKelw1WWLaiKXw7sSl8T6FvBlWkdX+94aGJ4o8XjUdlyhTCjd8c+B3KT3JfS8P0bLRNU6A==}
 
+  '@sinclair/typebox@0.34.38':
+    resolution: {integrity: sha512-HpkxMmc2XmZKhvaKIZZThlHmx1L0I/V1hWK1NubtlFnr6ZqdiOpV72TKudZUNQjZNsyDBay72qFEhEvb+bcwcA==}
+
   '@t3-oss/env-core@0.13.8':
     resolution: {integrity: sha512-L1inmpzLQyYu4+Q1DyrXsGJYCXbtXjC4cICw1uAKv0ppYPQv656lhZPU91Qd1VS6SO/bou1/q5ufVzBGbNsUpw==}
     peerDependencies:
@@ -1262,6 +1271,9 @@ packages:
   '@turbo/workspaces@2.5.4':
     resolution: {integrity: sha512-LLmImNOyDOZ8XNsNolefa7wQdrzAss0CoedPADCZFB+iIDXW+8w4YkgOvKaLKBLcm9kb7gWCP4L0o0EiZLXBUA==}
     hasBin: true
+
+  '@types/amqplib@0.10.7':
+    resolution: {integrity: sha512-IVj3avf9AQd2nXCx0PGk/OYq7VmHiyNxWFSb5HhU9ATh+i+gHWvVcljFTcTWQ/dyHJCTrzCixde+r/asL2ErDA==}
 
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
@@ -4841,6 +4853,8 @@ snapshots:
       '@noble/hashes': 1.8.0
       '@scure/base': 1.2.6
 
+  '@sinclair/typebox@0.34.38': {}
+
   '@t3-oss/env-core@0.13.8(typescript@5.8.3)(zod@3.25.49)':
     optionalDependencies:
       typescript: 5.8.3
@@ -4894,6 +4908,10 @@ snapshots:
       picocolors: 1.0.1
       semver: 7.6.2
       update-check: 1.5.4
+
+  '@types/amqplib@0.10.7':
+    dependencies:
+      '@types/node': 22.15.29
 
   '@types/estree@1.0.7': {}
 

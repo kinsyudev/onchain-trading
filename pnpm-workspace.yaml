@@ -9,6 +9,7 @@ catalog:
   tailwindcss: ^3.4.15
   tsx: 4.20.3
   typescript: ^5.8.3
+  "@sinclair/typebox": ^0.34
   zod: 4.0.14
   "@t3-oss/env-core": 0.13.8
 catalogs:

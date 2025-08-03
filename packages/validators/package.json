@@ -7,6 +7,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./messaging": {
+      "types": "./dist/messaging.d.ts",
+      "default": "./src/messaging.ts"
     }
   },
   "license": "MIT",
@@ -19,7 +23,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "zod": "catalog:"
+    "@sinclair/typebox": "catalog:"
   },
   "devDependencies": {
     "@kinsyu/eslint-config": "workspace:*",
