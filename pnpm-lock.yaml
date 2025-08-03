@@ -149,6 +149,31 @@ importers:
         specifier: 'catalog:'
         version: 5.8.3
 
+  packages/evm:
+    dependencies:
+      viem:
+        specifier: ^2.33.2
+        version: 2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49)
+    devDependencies:
+      '@kinsyu/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@kinsyu/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@kinsyu/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
+      eslint:
+        specifier: 'catalog:'
+        version: 9.28.0(jiti@2.4.2)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.5.3
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.3
+
   packages/messaging:
     dependencies:
       '@kinsyu/validators':
@@ -5133,6 +5158,11 @@ snapshots:
       typescript: 5.8.3
       zod: 4.0.14
 
+  abitype@1.0.8(typescript@5.8.3)(zod@3.25.49):
+    optionalDependencies:
+      typescript: 5.8.3
+      zod: 3.25.49
+
   abitype@1.0.8(typescript@5.8.3)(zod@4.0.14):
     optionalDependencies:
       typescript: 5.8.3
@@ -6904,6 +6934,21 @@ snapshots:
       object-keys: 1.1.1
       safe-push-apply: 1.0.0
 
+  ox@0.8.6(typescript@5.8.3)(zod@3.25.49):
+    dependencies:
+      '@adraffy/ens-normalize': 1.11.0
+      '@noble/ciphers': 1.3.0
+      '@noble/curves': 1.9.2
+      '@noble/hashes': 1.8.0
+      '@scure/bip32': 1.7.0
+      '@scure/bip39': 1.6.0
+      abitype: 1.0.8(typescript@5.8.3)(zod@3.25.49)
+      eventemitter3: 5.0.1
+    optionalDependencies:
+      typescript: 5.8.3
+    transitivePeerDependencies:
+      - zod
+
   ox@0.8.6(typescript@5.8.3)(zod@4.0.14):
     dependencies:
       '@adraffy/ens-normalize': 1.11.0
@@ -7918,6 +7963,23 @@ snapshots:
   v8-compile-cache-lib@3.0.1: {}
 
   validate-npm-package-name@5.0.1: {}
+
+  viem@2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@3.25.49):
+    dependencies:
+      '@noble/curves': 1.9.2
+      '@noble/hashes': 1.8.0
+      '@scure/bip32': 1.7.0
+      '@scure/bip39': 1.6.0
+      abitype: 1.0.8(typescript@5.8.3)(zod@3.25.49)
+      isows: 1.0.7(ws@8.18.2(bufferutil@4.0.9))
+      ox: 0.8.6(typescript@5.8.3)(zod@3.25.49)
+      ws: 8.18.2(bufferutil@4.0.9)
+    optionalDependencies:
+      typescript: 5.8.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+      - zod
 
   viem@2.33.2(bufferutil@4.0.9)(typescript@5.8.3)(zod@4.0.14):
     dependencies:
