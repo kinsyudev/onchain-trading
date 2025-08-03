@@ -1,8 +1,6 @@
 import type { Channel, ConsumeMessage } from "amqplib";
-import { Value } from "@sinclair/typebox/value";
 
 import type { InferQueueMessage, SupportedQueues } from "./types";
-import { queueSchemas } from "./config";
 
 export type MessageHandler<T extends SupportedQueues> = (
   message: InferQueueMessage<T>,
@@ -24,8 +22,6 @@ export async function subscribeToQueue<T extends SupportedQueues>(
     await channel.prefetch(options.prefetch);
   }
 
-  const schema = queueSchemas[queue];
-
   await channel.consume(
     queue,
     (msg) => {
@@ -34,16 +30,6 @@ export async function subscribeToQueue<T extends SupportedQueues>(
       void (async () => {
         try {
           const content = JSON.parse(msg.content.toString()) as unknown;
-
-          if (!Value.Check(schema, content)) {
-            const errors = [...Value.Errors(schema, content)];
-            console.error(`Invalid message received for queue ${queue}:`, errors);
-
-            if (!options.noAck) {
-              channel.nack(msg, false, false);
-            }
-            return;
-          }
 
           await handler(content as InferQueueMessage<T>, msg);
 
