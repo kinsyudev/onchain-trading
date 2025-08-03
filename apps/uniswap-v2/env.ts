@@ -9,6 +9,7 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "production", "test"])
       .default("development"),
+    START_BLOCK: z.number().gt(0),
   },
 
   runtimeEnv: process.env,

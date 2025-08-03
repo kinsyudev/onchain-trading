@@ -1,8 +1,9 @@
 import { createConfig } from "ponder";
 
+import { env } from "./env";
 import { UniV2PairAbi } from "./src/abis/UniswapV2PairAbi";
 
-export const START_BLOCK = 22009797;
+export const START_BLOCK = env.START_BLOCK;
 
 export default createConfig({
   chains: {
