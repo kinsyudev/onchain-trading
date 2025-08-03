@@ -6,8 +6,4 @@ export {
 } from "./connection";
 export { sendMessageToQueue } from "./producer";
 export { subscribeToQueue, type MessageHandler } from "./consumer";
-export type {
-  SupportedQueues,
-  InferQueueMessage,
-  QueueConfig,
-} from "./types";
+export type { SupportedQueues, InferQueueMessage, QueueConfig } from "./types";

@@ -7,17 +7,22 @@ export type MessageHandler<T extends SupportedQueues> = (
   originalMessage: ConsumeMessage,
 ) => Promise<void> | void;
 
-export async function subscribeToQueue<T extends SupportedQueues>(
-  channel: Channel,
-  queue: T,
-  handler: MessageHandler<T>,
+export async function subscribeToQueue<T extends SupportedQueues>({
+  channel,
+  queue,
+  handler,
+  options = {},
+}: {
+  channel: Channel;
+  queue: T;
+  handler: MessageHandler<T>;
   options: {
     noAck?: boolean;
     exclusive?: boolean;
     priority?: number;
     prefetch?: number;
-  } = {},
-): Promise<void> {
+  };
+}): Promise<void> {
   if (options.prefetch) {
     await channel.prefetch(options.prefetch);
   }

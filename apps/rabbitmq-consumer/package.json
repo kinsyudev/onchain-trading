@@ -1,41 +1,33 @@
 {
-  "name": "@kinsyu/messaging",
-  "private": true,
-  "version": "0.1.0",
+  "name": "rabbitmq-consumer",
+  "module": "src/index.ts",
   "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./src/index.ts"
-    },
-    "./amqplib": {
-      "types": "./dist/amqplib.d.ts",
-      "default": "./src/amqplib.ts"
-    },
-    "./env": "./env.ts"
-  },
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "dev": "tsc",
+    "dev": "pnpm with-env tsx --watch src/index.ts",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "start": "pnpm with-env tsx src/index.ts",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
   },
   "devDependencies": {
     "@kinsyu/eslint-config": "workspace:*",
     "@kinsyu/prettier-config": "workspace:*",
     "@kinsyu/tsconfig": "workspace:*",
-    "@types/amqplib": "0.10.7",
     "eslint": "catalog:",
     "prettier": "catalog:",
+    "tsx": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@kinsyu/prettier-config",
   "dependencies": {
+    "@kinsyu/messaging": "workspace:*",
     "@kinsyu/validators": "workspace:*",
     "@t3-oss/env-core": "catalog:",
-    "amqplib": "0.10.8"
-  }
+    "dotenv-cli": "catalog:",
+    "zod": "catalog:"
+  },
+  "prettier": "@kinsyu/prettier-config"
 }
