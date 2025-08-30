@@ -1,5 +1,6 @@
 mod config;
 mod datasources;
+mod messaging;
 mod processors;
 
 use {
@@ -72,8 +73,8 @@ pub async fn main() -> eyre::Result<()> {
 
     // Add processors
     pipeline_builder = pipeline_builder
-        .instruction(PumpfunDecoder, PumpfunInstructionProcessor::new())
-        .instruction(RaydiumAmmV4Decoder, RaydiumAmmV4InstructionProcessor::new());
+        .instruction(PumpfunDecoder, PumpfunInstructionProcessor::new(config.rabbitmq_url.clone()))
+        .instruction(RaydiumAmmV4Decoder, RaydiumAmmV4InstructionProcessor::new(config.rabbitmq_url.clone()));
 
     // Configure metrics and run
     let mut pipeline = pipeline_builder

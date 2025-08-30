@@ -7,15 +7,20 @@ use {
         processor::Processor,
     },
     carbon_pumpfun_decoder::instructions::PumpfunInstruction,
+    crate::messaging::RabbitMQPublisher,
     solana_sdk::instruction::Instruction,
     std::sync::Arc,
 };
 
-pub struct PumpfunInstructionProcessor;
+pub struct PumpfunInstructionProcessor {
+    publisher: RabbitMQPublisher,
+}
 
 impl PumpfunInstructionProcessor {
-    pub fn new() -> Self {
-        Self
+    pub fn new(rabbitmq_url: String) -> Self {
+        Self {
+            publisher: RabbitMQPublisher::new(rabbitmq_url),
+        }
     }
 }
 
@@ -38,17 +43,6 @@ impl Processor for PumpfunInstructionProcessor {
         let slot = metadata.transaction_metadata.slot;
 
         match &instruction.data {
-            PumpfunInstruction::CreateEvent(event) => {
-                log::info!(
-                    "🚀 Pumpfun CreateEvent - Signature: {}, Slot: {}, Mint: {}, Name: {}, Symbol: {}, Accounts: {}",
-                    signature,
-                    slot,
-                    event.mint,
-                    event.name,
-                    event.symbol,
-                    accounts.len()
-                );
-            }
             PumpfunInstruction::TradeEvent(event) => {
                 log::info!(
                     "💱 Pumpfun TradeEvent - Signature: {}, Slot: {}, Mint: {}, Sol Amount: {}, Token Amount: {}, Is Buy: {}, Accounts: {}",
@@ -60,19 +54,30 @@ impl Processor for PumpfunInstructionProcessor {
                     event.is_buy,
                     accounts.len()
                 );
-            }
-            PumpfunInstruction::CompleteEvent(event) => {
-                log::info!(
-                    "🎯 Pumpfun CompleteEvent - Signature: {}, Slot: {}, Mint: {}, Accounts: {}",
-                    signature,
+
+                // Create and publish trade event to RabbitMQ
+                let trade_event = crate::messaging::PumpfunTradeEvent {
+                    signature: signature.to_string(),
                     slot,
-                    event.mint,
-                    accounts.len()
-                );
+                    timestamp: std::time::SystemTime::now()
+                        .duration_since(std::time::UNIX_EPOCH)
+                        .unwrap_or_default()
+                        .as_secs(),
+                    program_id: "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P".to_string(),
+                    mint: event.mint.to_string(),
+                    sol_amount: event.sol_amount.to_string(),
+                    token_amount: event.token_amount.to_string(),
+                    is_buy: event.is_buy,
+                    trader: event.user.to_string(),
+                };
+
+                if let Err(e) = self.publisher.publish_pumpfun_trade(trade_event).await {
+                    log::error!("Failed to publish Pumpfun trade event: {}", e);
+                }
             }
             _ => {
-                log::info!(
-                    "📝 Pumpfun Instruction - Signature: {}, Slot: {}, Accounts: {}",
+                log::debug!(
+                    "📝 Pumpfun Instruction (not trade) - Signature: {}, Slot: {}, Accounts: {}",
                     signature,
                     slot,
                     accounts.len()

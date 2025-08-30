@@ -7,6 +7,8 @@ import {
 
 import { env } from "./env";
 import { handleUniswapV2Swap } from "./handlers/unsiwap-v2";
+import { handlePumpfunTrade } from "./handlers/pumpfun";
+import { handleRaydiumTrade } from "./handlers/raydium";
 
 let rabbitMQClient: RabbitMQClient | null = null;
 let isShuttingDown = false;
@@ -36,17 +38,40 @@ async function startConsumer() {
 
     console.log("Connected to RabbitMQ successfully");
 
-    // Subscribe to Uniswap V2 swaps queue
-    await subscribeToQueue({
-      channel: rabbitMQClient.channel,
-      queue: "uniswap-v2-swaps",
-      handler: handleUniswapV2Swap,
-      options: {
-        noAck: false, // Manual acknowledgment for reliability
-      },
-    });
+    // Subscribe to all queues
+    await Promise.all([
+      // Uniswap V2 swaps queue
+      subscribeToQueue({
+        channel: rabbitMQClient.channel,
+        queue: "uniswap-v2-swaps",
+        handler: handleUniswapV2Swap,
+        options: {
+          noAck: false, // Manual acknowledgment for reliability
+        },
+      }),
 
-    console.log("Consumer is now listening for messages...");
+      // Pumpfun trades queue
+      subscribeToQueue({
+        channel: rabbitMQClient.channel,
+        queue: "pumpfun-trades",
+        handler: handlePumpfunTrade,
+        options: {
+          noAck: false,
+        },
+      }),
+
+      // Raydium trades queue (unified)
+      subscribeToQueue({
+        channel: rabbitMQClient.channel,
+        queue: "raydium-trades",
+        handler: handleRaydiumTrade,
+        options: {
+          noAck: false,
+        },
+      }),
+    ]);
+
+    console.log("Consumer is now listening for messages on all queues...");
   } catch (error) {
     console.error("Failed to start consumer:", error);
     throw error;

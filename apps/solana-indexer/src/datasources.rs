@@ -76,10 +76,4 @@ pub fn create_rpc_datasource(config: &Config) -> eyre::Result<RpcBlockSubscribe>
     Ok(datasource)
 }
 
-/// Create a combined datasource filter that includes multiple programs
-pub fn create_program_filters() -> Vec<String> {
-    vec![
-        PUMPFUN_PROGRAM_ID.to_string(),
-        RAYDIUMAMMV4_PROGRAM_ID.to_string(),
-    ]
-}
+

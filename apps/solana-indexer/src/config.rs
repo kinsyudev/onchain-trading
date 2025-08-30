@@ -7,6 +7,7 @@ pub struct Config {
     pub x_token: Option<String>,
     pub rpc_url: String,
     pub rpc_ws_url: String,
+    pub rabbitmq_url: String,
     pub data_source: DataSourceType,
     pub log_level: String,
 }
@@ -40,6 +41,8 @@ impl Config {
                 .unwrap_or_else(|_| "https://api.mainnet-beta.solana.com".to_string()),
             rpc_ws_url: env::var("RPC_WS_URL")
                 .unwrap_or_else(|_| "wss://api.mainnet-beta.solana.com".to_string()),
+            rabbitmq_url: env::var("RABBITMQ_URL")
+                .unwrap_or_else(|_| "http://guest:guest@localhost:15672".to_string()),
             data_source,
             log_level: env::var("LOG_LEVEL")
                 .unwrap_or_else(|_| "info".to_string()),
