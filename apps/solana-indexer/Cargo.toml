@@ -9,14 +9,16 @@ carbon-core = "0.9.1"
 carbon-pumpfun-decoder = "0.9.1"
 carbon-raydium-amm-v4-decoder = "0.9.1"
 carbon-yellowstone-grpc-datasource = "0.9.1"
+carbon-rpc-block-subscribe-datasource = "0.9.1"
 carbon-log-metrics = "0.9.1"
-solana-sdk = "=2.1.15"
-solana-pubkey = "=2.1.15"
-solana-client = "=2.1.15"
-tokio = "1.43.0"
+solana-sdk = "2.2"
+solana-client = "2.2"
+tokio = { version = "1.43.0", features = ["full"] }
 dotenv = "0.15.0"
 env_logger = "0.11.5"
 log = "0.4.25"
-yellowstone-grpc-client = { version = "5.0.0" }
-yellowstone-grpc-proto = { version = "5.0.0" }
+yellowstone-grpc-client = { version = "6.0.0" }
+yellowstone-grpc-proto = { version = "6.0.0" }
+serde = { version = "1.0", features = ["derive"] }
+eyre = "0.6"
             
