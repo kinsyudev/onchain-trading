@@ -2,7 +2,7 @@ import { Type } from "@sinclair/typebox";
 
 import { BaseEventSchema } from "./base";
 
-export const UniswapV2Swap = Type.Union(
+export const UniswapV2Swap = Type.Intersect(
   [
     Type.Object({
       sender: Type.String(),

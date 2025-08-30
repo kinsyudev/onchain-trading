@@ -6,6 +6,7 @@ import {
 } from "@kinsyu/messaging";
 
 import { env } from "./env";
+import { handleUniswapV2Swap } from "./handlers/unsiwap-v2";
 
 let rabbitMQClient: RabbitMQClient | null = null;
 let isShuttingDown = false;
@@ -35,15 +36,14 @@ async function startConsumer() {
 
     console.log("Connected to RabbitMQ successfully");
 
-    // Example: Subscribe to a queue
-    // Replace with your actual queue name and message handler
+    // Subscribe to Uniswap V2 swaps queue
     await subscribeToQueue({
       channel: rabbitMQClient.channel,
       queue: "uniswap-v2-swaps",
-      handler: async (_message, _originalMessage) => {
-        // Your business logic here
+      handler: handleUniswapV2Swap,
+      options: {
+        noAck: false, // Manual acknowledgment for reliability
       },
-      options: {},
     });
 
     console.log("Consumer is now listening for messages...");
