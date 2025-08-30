@@ -48,6 +48,10 @@ yarn-error.log*
 dist/
 .cache
 
+# rust
+**/*/target
+
+
 # turbo
 .turbo
 

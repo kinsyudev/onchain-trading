@@ -2,6 +2,7 @@ packages:
   - apps/*
   - packages/*
   - tooling/*
+  - apps/solana-indexer
 catalog:
   "@sinclair/typebox": ^0.34
   "@t3-oss/env-core": 0.13.8
