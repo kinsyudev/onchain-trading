@@ -1,0 +1,22 @@
+[package]
+name = "solana-indexer"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+async-trait = "0.1.86"
+carbon-core = "0.9.1"
+carbon-pumpfun-decoder = "0.9.1"
+carbon-raydium-amm-v4-decoder = "0.9.1"
+carbon-yellowstone-grpc-datasource = "0.9.1"
+carbon-log-metrics = "0.9.1"
+solana-sdk = "=2.1.15"
+solana-pubkey = "=2.1.15"
+solana-client = "=2.1.15"
+tokio = "1.43.0"
+dotenv = "0.15.0"
+env_logger = "0.11.5"
+log = "0.4.25"
+yellowstone-grpc-client = { version = "5.0.0" }
+yellowstone-grpc-proto = { version = "5.0.0" }
+            
